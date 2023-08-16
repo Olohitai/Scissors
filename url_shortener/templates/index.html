@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-half">
+                <h2 class="title is-2 has-text-centered">Welcome to <span class="animated-text"></span></h2>
+                <p class="subtitle has-text-centered">The URL Shortener for Efficient Links</p>
+            </div>
+        </div>
+        <div class="columns is-centered">
+            <div class="column is-half">
+                <form action="{{ url_for('shortener.create_link') }}" method="post" class="box">
+                    <div class="field">
+                        <label class="label">Original URL</label>
+                        <div class="control">
+                            <input class="input" type="text" name="original_url" placeholder="Enter URL">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-primary" type="submit">Shorten Url</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const animatedText = document.querySelector('.animated-text');
+    const text = 'BitTrim!!';
+    let index = 0;
+
+    function typeText() {
+        animatedText.textContent += text[index];
+        index++;
+
+        if (index < text.length) {
+            setTimeout(typeText, 100);
+        }
+    }
+
+    typeText();
+</script>
+{% endblock %}

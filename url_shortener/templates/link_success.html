@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-half">
+                <div class="box">
+                    <p class="notification is-primary" style="cursor: pointer; margin: 20px; border-radius: 8px;">
+                        Original URL: {{ original_url }}
+                    </p>
+                    <p class="notification is-link" style="cursor: pointer; margin: 20px;">
+                        Short URL: <a
+                            href="{{ url_for('shortener.redirect_to_url', short_url=new_url, _external=True) }}"
+                            target="_blank">{{ url_for('shortener.redirect_to_url', short_url=new_url, _external=True) }}</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
